@@ -170,6 +170,7 @@ public class OpenGLRenderer implements Runnable {
 
     private int[] getConfig() {
         return new int[]{
+                EGL10.EGL_SUCCESS.
                 EGL10.EGL_RENDERABLE_TYPE, 4,
                 EGL10.EGL_RED_SIZE, 8,
                 EGL10.EGL_GREEN_SIZE, 8,
