@@ -553,6 +553,8 @@ class AndroidVideoPlayerApi {
     const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setCameraRotation', StandardMessageCodec());
     final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
 
+    return;
+
     /* if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -575,6 +577,9 @@ class AndroidVideoPlayerApi {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setMediaFormat', StandardMessageCodec());
     final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+
+    return;
+
     /* if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
