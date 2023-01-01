@@ -159,48 +159,15 @@ class AndroidVideoPlayer extends VideoPlayerPlatform {
     return _api.setMixWithOthers(MixWithOthersMessage(mixWithOthers: mixWithOthers));
   }
 
-  Future<void> setCameraRotation(CameraRotationMessage arg) async {
-    final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setCameraRotation', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
-    if (replyMap == null) {
-      throw PlatformException(
-        code: 'channel-error',
-        message: 'Unable to establish connection on channel.',
-        details: null,
-      );
-    } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = replyMap['error'] as Map<Object?, Object?>;
-      throw PlatformException(
-        code: error['code'] as String,
-        message: error['message'] as String?,
-        details: error['details'],
-      );
-    } else {
-      // noop
-    }
+  Future<void> setCameraRotation(int textureId, double roll, double pitch, double yaw) {
+    return _api.setCameraRotation(CameraRotationMessage(textureId: textureId, roll: roll, pitch: pitch, yaw: yaw));
   }
 
-  Future<void> setMediaFormat(MediaFormatMessage arg) async {
-    final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setMediaFormat', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
-    if (replyMap == null) {
-      throw PlatformException(
-        code: 'channel-error',
-        message: 'Unable to establish connection on channel.',
-        details: null,
-      );
-    } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = replyMap['error'] as Map<Object?, Object?>;
-      throw PlatformException(
-        code: error['code'] as String,
-        message: error['message'] as String?,
-        details: error['details'],
-      );
-    } else {
-      // noop
-    }
+  Future<void> setMediaFormat(int textureId, int mediaFormat) async {
+    return _api.setMediaFormat(MediaFormatMessage(
+      textureId: textureId,
+      mediaFormat: mediaFormat,
+    ));
   }
 
   EventChannel _eventChannelFor(int textureId) {
@@ -220,49 +187,5 @@ class AndroidVideoPlayer extends VideoPlayerPlatform {
       Duration(milliseconds: pair[0] as int),
       Duration(milliseconds: pair[1] as int),
     );
-  }
-}
-
-class CameraRotationMessage {
-  int? textureId;
-  double? roll;
-  double? pitch;
-  double? yaw;
-
-  Object encode() {
-    final Map<Object?, Object?> pigeonMap = <Object?, Object?>{};
-    pigeonMap['textureId'] = textureId;
-    pigeonMap['roll'] = roll;
-    pigeonMap['pitch'] = pitch;
-    pigeonMap['yaw'] = yaw;
-    return pigeonMap;
-  }
-
-  static CameraRotationMessage decode(Object message) {
-    final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return CameraRotationMessage()
-      ..textureId = pigeonMap['textureId'] as int?
-      ..roll = pigeonMap['roll'] as double?
-      ..pitch = pigeonMap['pitch'] as double?
-      ..yaw = pigeonMap['yaw'] as double?;
-  }
-}
-
-class MediaFormatMessage {
-  int? textureId;
-  int? mediaFormat;
-
-  Object encode() {
-    final Map<Object?, Object?> pigeonMap = <Object?, Object?>{};
-    pigeonMap['textureId'] = textureId;
-    pigeonMap['mediaFormat'] = mediaFormat;
-    return pigeonMap;
-  }
-
-  static MediaFormatMessage decode(Object message) {
-    final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return MediaFormatMessage()
-      ..textureId = pigeonMap['textureId'] as int?
-      ..mediaFormat = pigeonMap['mediaFormat'] as int?;
   }
 }
