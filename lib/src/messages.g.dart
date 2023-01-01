@@ -549,8 +549,7 @@ class AndroidVideoPlayerApi {
   }
 
   Future<void> setCameraRotation(CameraRotationMessage arg_msg) async {
-    final Object encoded = arg_msg.encode();
-    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setCameraRotation', StandardMessageCodec());
+    final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.AndroidVideoPlayerApi.setMixWithOthers', codec, binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap = await channel.send(<Object?>[arg_msg]) as Map<Object?, Object?>?;
 
     if (replyMap == null) {
@@ -571,8 +570,7 @@ class AndroidVideoPlayerApi {
   }
 
   Future<void> setMediaFormat(MediaFormatMessage arg_msg) async {
-    final Object encoded = arg_msg.encode();
-    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setMediaFormat', StandardMessageCodec());
+    final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.AndroidVideoPlayerApi.setMixWithOthers', codec, binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap = await channel.send(<Object?>[arg_msg]) as Map<Object?, Object?>?;
 
     if (replyMap == null) {
