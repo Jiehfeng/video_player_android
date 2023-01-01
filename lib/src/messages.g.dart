@@ -548,49 +548,47 @@ class AndroidVideoPlayerApi {
     }
   }
 
-  Future<void> setCameraRotation(CameraRotationMessage arg) async {
-    final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setCameraRotation', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+  Future<void> setCameraRotation(CameraRotationMessage arg_msg) async {
+    final Object encoded = arg_msg.encode();
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.AndroidVideoPlayerApi.setCameraRotation', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap = await channel.send(<Object?>[arg_msg]) as Map<Object?, Object?>?;
 
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
         message: 'Unable to establish connection on channel.',
-        details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = replyMap['error'] as Map<Object?, Object?>;
+      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
-        code: error['code'] as String,
+        code: (error['code'] as String?)!,
         message: error['message'] as String?,
         details: error['details'],
       );
     } else {
-      // noop
+      return;
     }
   }
 
-  Future<void> setMediaFormat(MediaFormatMessage arg) async {
-    final Object encoded = arg.encode();
-    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setMediaFormat', StandardMessageCodec());
-    final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
+  Future<void> setMediaFormat(MediaFormatMessage arg_msg) async {
+    final Object encoded = arg_msg.encode();
+    const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.AndroidVideoPlayerApi.setMediaFormat', StandardMessageCodec());
+    final Map<Object?, Object?>? replyMap = await channel.send(<Object?>[arg_msg]) as Map<Object?, Object?>?;
 
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
         message: 'Unable to establish connection on channel.',
-        details: null,
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = replyMap['error'] as Map<Object?, Object?>;
+      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
-        code: error['code'] as String,
+        code: (error['code'] as String?)!,
         message: error['message'] as String?,
         details: error['details'],
       );
     } else {
-      // noop
+      return;
     }
   }
 }
