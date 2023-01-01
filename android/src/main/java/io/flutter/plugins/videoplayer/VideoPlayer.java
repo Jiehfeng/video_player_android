@@ -33,6 +33,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
 import com.google.android.exoplayer2.util.Util;
 import io.flutter.plugin.common.EventChannel;
+import io.flutter.plugins.videoplayer.ext360.ProxySurface;
 import io.flutter.view.TextureRegistry;
 import java.util.Arrays;
 import java.util.Collections;
@@ -328,6 +329,18 @@ final class VideoPlayer {
     }
     if (exoPlayer != null) {
       exoPlayer.release();
+    }
+  }
+
+  void setCameraRotation(Double roll,Double pitch,Double yaw) {
+    if(proxySurface !=null) {
+      proxySurface.setCameraRotation(roll.floatValue(),pitch.floatValue(),yaw.floatValue());
+    }
+  }
+
+  void setMediaFormat(int mediaFormat) {
+    if(proxySurface !=null) {
+      proxySurface.setMediaFormat(mediaFormat);
     }
   }
 }
