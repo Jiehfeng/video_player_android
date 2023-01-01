@@ -552,7 +552,8 @@ class AndroidVideoPlayerApi {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setCameraRotation', StandardMessageCodec());
     final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
-    if (replyMap == null) {
+
+    /* if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
         message: 'Unable to establish connection on channel.',
@@ -567,14 +568,14 @@ class AndroidVideoPlayerApi {
       );
     } else {
       // noop
-    }
+    } */
   }
 
   Future<void> setMediaFormat(MediaFormatMessage arg) async {
     final Object encoded = arg.encode();
     const BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>('dev.flutter.pigeon.VideoPlayerApi.setMediaFormat', StandardMessageCodec());
     final Map<Object?, Object?>? replyMap = await channel.send(encoded) as Map<Object?, Object?>?;
-    if (replyMap == null) {
+    /* if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
         message: 'Unable to establish connection on channel.',
@@ -589,6 +590,6 @@ class AndroidVideoPlayerApi {
       );
     } else {
       // noop
-    }
+    } */
   }
 }
