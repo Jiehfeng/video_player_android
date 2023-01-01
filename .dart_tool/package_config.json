@@ -221,10 +221,10 @@
       "name": "video_player_android",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-01T12:50:07.127578Z",
+  "generated": "2023-01-01T13:55:40.037909Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }
