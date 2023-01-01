@@ -8,6 +8,7 @@ import static com.google.android.exoplayer2.Player.REPEAT_MODE_ALL;
 import static com.google.android.exoplayer2.Player.REPEAT_MODE_OFF;
 
 import android.content.Context;
+import android.graphics.SurfaceTexture;
 import android.net.Uri;
 import android.view.Surface;
 import androidx.annotation.NonNull;
