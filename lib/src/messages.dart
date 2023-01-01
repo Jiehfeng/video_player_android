@@ -273,6 +273,12 @@ class _AndroidVideoPlayerApiCodec extends StandardMessageCodec {
     } else if (value is VolumeMessage) {
       buffer.putUint8(134);
       writeValue(buffer, value.encode());
+    } else if (value is CameraRotationMessage) {
+      buffer.putUint8(135);
+      writeValue(buffer, value.encode());
+    } else if (value is MediaFormatMessage) {
+      buffer.putUint8(136);
+      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -301,6 +307,12 @@ class _AndroidVideoPlayerApiCodec extends StandardMessageCodec {
 
       case 134:
         return VolumeMessage.decode(readValue(buffer)!);
+
+      case 135:
+        return CameraRotationMessage.decode(readValue(buffer)!);
+
+      case 136:
+        return MediaFormatMessage.decode(readValue(buffer)!);
 
       default:
         return super.readValueOfType(type, buffer);
