@@ -5,8 +5,8 @@
 import 'package:pigeon/pigeon.dart';
 
 @ConfigurePigeon(PigeonOptions(
-  dartOut: '../video_player_platform_interface/lib/messages.dart',
-  dartTestOut: '../video_player_platform_interface/lib/test.dart',
+  dartOut: 'lib/src/messages.g.dart',
+  dartTestOut: 'test/test_api.dart',
   javaOut: 'android/src/main/java/io/flutter/plugins/videoplayer/Messages.java',
   javaOptions: JavaOptions(
     package: 'io.flutter.plugins.videoplayer',
