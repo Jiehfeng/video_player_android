@@ -5,8 +5,8 @@
 import 'package:pigeon/pigeon.dart';
 
 @ConfigurePigeon(PigeonOptions(
-  dartOut: 'lib/src/messages.g.dart',
-  dartTestOut: 'test/test_api.dart',
+  dartOut: '../video_player_platform_interface/lib/messages.dart',
+  dartTestOut: '../video_player_platform_interface/lib/test.dart',
   javaOut: 'android/src/main/java/io/flutter/plugins/videoplayer/Messages.java',
   javaOptions: JavaOptions(
     package: 'io.flutter.plugins.videoplayer',
@@ -56,6 +56,20 @@ class MixWithOthersMessage {
   bool mixWithOthers;
 }
 
+class CameraRotationMessage {
+  CameraRotationMessage(this.textureId, this.roll, this.pitch, this.yaw);
+  int textureId;
+  double roll;
+  double pitch;
+  double yaw;
+}
+
+class MediaFormatMessage {
+  MediaFormatMessage(this.textureId, this.mediaFormat);
+  int textureId;
+  int mediaFormat;
+}
+
 @HostApi(dartHostTestHandler: 'TestHostVideoPlayerApi')
 abstract class AndroidVideoPlayerApi {
   void initialize();
@@ -69,4 +83,6 @@ abstract class AndroidVideoPlayerApi {
   void seekTo(PositionMessage msg);
   void pause(TextureMessage msg);
   void setMixWithOthers(MixWithOthersMessage msg);
+  void setCameraRotation(CameraRotationMessage msg);
+  void setMediaFormat(MediaFormatMessage msg);
 }
