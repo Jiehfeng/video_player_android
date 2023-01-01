@@ -191,7 +191,8 @@ final class VideoPlayer {
         });
 
     surface = new Surface(textureEntry.surfaceTexture());
-    proxySurface = new ProxySurface(surface);
+    SurfaceTexture outputTexture = textureEntry.surfaceTexture();
+    proxySurface = new ProxySurface(outputTexture);
     surface = proxySurface.createSurface();
     exoPlayer.setVideoSurface(surface);
     setAudioAttributes(exoPlayer, options.mixWithOthers);
